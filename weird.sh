@@ -7,7 +7,7 @@
 #   history -d $((HISTCMD-1))
 # }
 
-# choose your own logfile
+# choose your own logfile if you want
 LOGFILE=~/.weirdlog
 
 #to prevent accidental exposure
@@ -16,7 +16,7 @@ function rot13() {
 }
 
 if [ $# -ne 0 ]; then
-  NOW=`date "+%s | %Y-%m-%d %H:%M:%S |"`
+  NOW=`date "+%Y-%m-%d %H:%M:%S |"`
   LOG=`echo $NOW $@ | rot13`
   echo $LOG >> $LOGFILE
   # to vusually hide what was just weirded
