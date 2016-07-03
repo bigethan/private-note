@@ -18,13 +18,15 @@ function rot13() {
 
 if [ "$1" = "done" ] && [ "$2" != "" ]; then
   grep -v "^$2 |" $LOGFILE > $TEMPFILE && mv $TEMPFILE $LOGFILE
-elif [ $# -ne 0 ]; then
+elif [ "$1" = "show" ]; then
+  cat $LOGFILE | rot13
+elif [ $# -eq 0 ]; then
   ID=`grep -o "^[0-9]\{1,\}" $LOGFILE| tail -1`
   NOW=`date "+ | %Y-%m-%d %H:%M:%S |"`
-  LOG=`echo $(($ID + 1)) $NOW $@ | rot13`
+  echo -n '⤇ '
+  read MSG
+  LOG=`echo $(($ID + 1)) $NOW $MSG | rot13`
   echo $LOG >> $LOGFILE
   # to _visually_ hide what was just entered
   clear
-else
-  cat $LOGFILE | rot13
 fi
