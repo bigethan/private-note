@@ -8,6 +8,7 @@
 # }
 
 # choose your own logfile if you want
+# perhaps in a shared/dropbox drive
 LOGFILE=~/.weirdlog
 TEMPFILE=~/.weirdtmp
 
